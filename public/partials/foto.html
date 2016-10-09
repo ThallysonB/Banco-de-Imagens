@@ -1,0 +1,121 @@
+<!-- HEADER -->
+<header class="header">
+    <div class="container-fluid container-home">
+      <div class="header-menu">
+        <div class="header-menu__content">
+          <div class="col-md-4">
+            <nav class="header-menu__navigation header-menu__navigation-1">
+              <ul class="header-menu_menu">
+                  <li class="header-menu__menu-item">
+                    <a href="/" class="header-menu__menu-link">Banco de Imagens</a>
+                  </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="col-md-4">
+            <div class="header-menu__logo">
+              <a title="Empregos RN" href="/">
+                <img alt="Logo do Empregos RN" class="img-responsive header-menu__logo-icon" src="http://vagasempregosrn.com.br/assets/logo/logo_empregosrn-94e3bd37cdf4182fd50234ee7dbee2237f1844dd5e63bd383dd670bed5148351.png" width="284px" height="35px">
+              </a>
+            </div> <!-- HEADER-MENU__LOGO -->
+          </div> <!-- END COL-MD-4 -->
+          <div class="col-md-4">
+            <nav class="header-menu__navigation header-menu__navigation-2">
+              <ul class="header-menu_menu">
+                  <li class="header-menu__menu-item">
+                    <a href="" class="header-menu__menu-link">Fazer Upload</a>
+                  </li>
+              </ul>
+            </nav>
+          </div>
+        </div> <!-- END HEADER-MENU__CONTENT -->
+      </div> <!-- END HEADER-MENU -->
+
+      <div class="header-box">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="header-box__title">{{foto.titulo}}</h1>
+            <p class="header-box__description">{{foto.descricao}}</p>
+          </div> <!-- END COL-MD-12 -->
+        </div> <!-- END ROW -->
+      </div> <!-- END HEADER-BOX -->
+    </div> <!-- END CONTAINER-HOME -->
+  </header> <!-- END HEADER -->
+
+  <!-- END HEADER -->
+
+<!-- ALERT SUCCESS OR FAIL UPLOAD IMAGE -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-11">
+      <div class="global-message fadein" ng-show="mensagem.length">
+        <div class="global-message__content fadein fadeout" ng-hide="myCheck">
+          <p class="global-message__alert fadein">{{mensagem}}</p>
+        </div>
+      </div>
+    </div> <!-- END COL-MD-11 -->
+  </div> <!-- END ROW -->
+</div> <!-- END CONTAINER -->
+
+  <!-- IMAGE CARD -->
+<div class="container container-upload">
+  <div class="row">
+    <div class="col-md-6">
+      <form novalidate name="formulario" class="form-upload" ng-submit="submeter()">
+
+          <div class="form-group">
+            <label>Título</label>
+            <input ng-model="foto.titulo" name="titulo" class="form-control" placeholder="Digite um título" ng-maxlength="26" required>
+            <span ng-show="formulario.$submitted && formulario.titulo.$error.required" class="form-upload__error">não pode ficar em branco</span>
+            <span ng-show="formulario.$submitted && formulario.titulo.$error.maxlength" class="form-upload__error">o título deve ter até 26 caracteres</span>
+          </div>
+
+          <div class="form-group">
+            <label>Url</label>
+            <input ng-model="foto.url" name="url" class="form-control" placeholder="Digite a url da imagem" required>
+            <span ng-show="formulario.$submitted && formulario.url.$error.required" class="form-upload__error form-upload__error-url">não pode ficar em branco</span>
+          </div>
+
+          <div class="form-group">
+            <label>Descrição</label>
+            <textarea ng-model="foto.descricao" name="descricao" rows="4" class="form-control form-control__description" placeholder="Digite sua descrição" ng-maxlength="80"></textarea>
+            <span ng-show="formulario.$submitted && formulario.descricao.$error.maxlength" class="form-upload__error form-upload__error-description">a descrição deve ter até 80 caracteres</span>
+          </div>
+
+          <div class="form-group">
+            <label>Categorias:</label>
+            <select name="grupo"
+                    ng-model="foto.grupo"
+                    ng-controller="GruposController"
+                    ng-options="grupo._id as (grupo.nome | uppercase) for grupo in grupos" required>
+              <option value="">Escolha um categoria</option>
+            </select>
+            <span ng-show="formulario.$submitted && formulario.grupo.$error.required" class="form-upload__error form-upload__error-grupo">a categoria não pode ficar em branco</span>
+            </span>
+        </div>
+
+          <button type="submit" class="btn btn-primary">Salvar</button>
+          <a href="/" class="btn btn-primary">Voltar</a>
+      </div> <!-- END COL-MD-6 -->
+  </form> <!-- END FORM -->
+
+
+<!-- IMAGE CARD  -->
+    <div class="col-md-4 col-md-push-1">
+      <div class="image-card">
+          <div class="image-card__container">
+            <div class="image-card__header">
+              <div class="mask"></div>
+              <img class="img-responsive center-block image-card__image" src="{{foto.url}}" alt="{{foto.titulo}}">
+            </div>
+            <div class="image-card__content">
+              <h3 class="image-card__title image-card__title-foto-upload">{{foto.titulo}}</h3>
+              <p class="image-card__description">{{foto.descricao}}</p>
+            </div>
+          </div> <!-- END CARD CONTAINER -->
+        </div> <!-- END IMAGE-CARD -->
+    </div> <!-- END COL-MD-6 -->
+  </div> <!-- END ROW -->
+</div> <!-- END CONTAINER -->
+
+ <!-- END IMAGE CARD

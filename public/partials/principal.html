@@ -1,0 +1,106 @@
+<!-- HEADER -->
+<header class="header">
+    <div class="container-fluid container-home">
+      <div class="header-menu">
+        <div class="header-menu__content">
+          <div class="col-md-4">
+            <nav class="header-menu__navigation header-menu__navigation-1">
+              <ul class="header-menu_menu">
+                  <li class="header-menu__menu-item">
+                    <a href="/" class="header-menu__menu-link">Banco de Imagens</a>
+                  </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="col-md-4">
+            <div class="header-menu__logo"></a>
+              <a title="Empregos RN" href="/">
+                <img alt="Logo do Empregos RN" class="img-responsive header-menu__logo-icon" src="http://vagasempregosrn.com.br/assets/logo/logo_empregosrn-94e3bd37cdf4182fd50234ee7dbee2237f1844dd5e63bd383dd670bed5148351.png" width="284px" height="35px">
+              </a>
+            </div> <!-- HEADER-MENU__LOGO -->
+          </div> <!-- END COL-MD-4 -->
+          <div class="col-md-4">
+            <nav class="header-menu__navigation header-menu__navigation-2">
+              <ul class="header-menu_menu">
+                  <li class="header-menu__menu-item">
+                    <a href="/nova" class="header-menu__menu-link">Fazer Upload</a>
+                  </li>
+              </ul>
+            </nav>
+          </div> <!-- END COL-MD-4 -->
+        </div> <!-- END HEADER-MENU__CONTENT -->
+      </div> <!-- END HEADER-MENU -->
+
+      <div class="header-box">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="header-box__title">Encontre a foto para a sua vaga!</h1>
+            <h2 class="header-box__caption">A foto perfeita para a sua vaga você encontra aqui!</h2>
+            <div class="header-box-upload">
+              <div class="col-md-6 col-md-push-3">
+                <a href="/nova" class="btn-upload"><button class="btn btn-primary btn-upload" type="button">Fazer Upload</button></a>
+              </div> <!-- END COL-MD-6 -->
+            </div> <!-- END BOX-UPLOAD -->
+          </div> <!-- END COL-MD-12 -->
+        </div> <!-- END ROW -->
+      </div> <!-- END HEADER-BOX -->
+    </div> <!-- END CONTAINER-HOME -->
+  </header> <!-- END HEADER -->
+
+  <!-- END HEADER -->
+
+  <!-- IMAGE CARD -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="header-box-search">
+          <div class="col-md-12">
+            <div class="input-group">
+            <span class="input-group-btn">
+                  <div class="btn btn-primary btn-search">Pesquisar:</div>
+                </span>  <!-- END INPUT-GROUP-BTN  -->
+              <input type="text" class="form-control" placeholder="Digite uma palavra-chave" ng-model="filtro" ng-options="{debounce :500}">
+
+              </div> <!-- END INPUT-GROUP -->
+
+      <div class="global-message global-message__home fadein" ng-show="mensagem.length">
+        <div class="global-message__content fadein fadeout" ng-hide="myCheck">
+          <p class="global-message__alert fadein">{{mensagem}}</p>
+        </div>
+      </div>
+
+            </div> <!-- END COL-MD-12 -->
+          </div> <!-- END ROW -->
+        </div> <!-- END HEADER-BOX -->
+      </div> <!-- END COL-MD-12 -->
+    </div> <!-- END ROW -->
+  </div> <!-- END CONTAINER -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+      <!-- IMAGE CARD REPEAT -->
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 image-card__effect" ng-repeat="foto in fotos | filter: filtro | orderBy: '-created_at'" titulo="{{foto.titulo}}">
+          <div class="image-card">
+            <div class="image-card__container">
+              <div class="image-card__header">
+                <img class="img-responsive center-block image-card__image" src="{{foto.url}}" alt="{{foto.titulo}}">
+                <div class="mask"></div>
+              </div>
+              <div class="image-card__content">
+                <h3 class="image-card__title">{{foto.titulo}}</h3>
+              </div>
+              <div class="image-card__footer">
+                <a class="btn btn-primary image-card__btn-edit-image" href="editar/{{foto._id}}">Editar</a>
+                <button ng-click="remover(foto)" class="btn btn-danger image-card__btn-delete-image">Apagar</button>
+              </div> <!-- END CARD FOOTER -->
+            </div> <!-- END CARD CONTAINER -->
+          </div> <!-- END IMAGE-CARD -->
+        </div> <!-- END IMAGE CARD REPEAT -->
+      </div> <!-- END COL-MD-12 -->
+    </div> <!-- END ROW -->
+  </div> <!--  END CONTAINER -->
+
+ <!-- END IMAGE CARD -->
+
