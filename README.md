@@ -7,7 +7,6 @@ Make sure you have [Node.js](http://nodejs.org/) and the [NPM](https://www.npmjs
 ```sh
 $ git clone git@github.com:ThallysonB/Banco-de-Imagens.git # or clone your own fork
 $ cd Banco-de-Imagens
-$ npm install
 $ npm start
 ```
 
